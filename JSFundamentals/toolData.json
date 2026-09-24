@@ -1,0 +1,12 @@
+{
+    "tool1": {
+        "name": "selenium",
+        "version": 4.5,
+        "languages": ["java","js","c#","python","ruby"]
+    },
+    "tool2": {
+        "name": "playwright",
+        "version": 1.63,
+        "languages": ["java","js","c#","python"]
+    }
+}

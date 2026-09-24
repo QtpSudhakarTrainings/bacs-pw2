@@ -1,0 +1,101 @@
+<html>
+<head>
+    <title>Sample Registration Page</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            padding: 8px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+        table {
+            width: 100%;
+        }
+        .demo{
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        #email {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sample Registration Page</h1>
+    <table>
+    <tr><td class="demo"><label name="firstName">first name:</label></td><td><input type="text" name="firstName" aria-label="firstname"/></td></tr>
+    
+    <tr><td class="demo"><label name="lastName" for="lname">last name:</label></td><td><input type="text" id="lname" name="lastName" /></td></tr>
+    <tr><td><label name="email">email:</label></td><td><input type="email" id="email" name="email" /></td></tr>
+    <tr><td><label name="username">username:</label></td><td><input type="text" name="username" /></td></tr>
+    <tr><td><label name="password">password:</label></td><td><input type="password" name="password" /></td></tr>
+    <tr><td><label name="confirmPassword">confirm password:</label></td><td><input type="password" name="confirmPassword" /></td></tr>
+    <tr><td><label name="contactNumber">contact number:</label></td><td><input type="text" name="contactNumber" /></td></tr>
+    
+    <tr><td><label name="country">country:</label></td><td><select name="country" aria-label="country">
+        <option value="usa">USA</option>
+        <option value="canada">Canada</option>
+        <option value="uk">UK</option>
+        <option value="australia">Australia</option>
+    </select></td></tr>
+    <tr><td><label name="gender">Gender:</label></td><td>
+    <input type="radio" name="gender" /> Male
+    <input type="radio" name="gender" /> Female
+    <input type="radio" name="gender" /> Other
+    </td></tr>
+    <tr><td><label name="acceptTerms">Accept Terms</label></td><td><input type="checkbox" name="acceptTerms" /></td></tr>
+    
+    <tr><td colspan="2"><button type="submit">Register</button></td></tr>
+    </table>
+    
+    Already have an account? <a href="login.html" title="Login here">Login here</a>
+    <br />
+    <a href="terms.html" title="Click here for Terms and conditions">Terms and conditions</a>
+    <br />
+
+    <script>
+        // Read all data on click on register
+        document.querySelector('button[type="submit"]').addEventListener('click', function(event) {
+            event.preventDefault();
+            const formData = {
+                firstName: document.querySelector('input[name="firstName"]').value,
+                lastName: document.querySelector('input[name="lastName"]').value,
+                email: document.querySelector('input[name="email"]').value,
+                username: document.querySelector('input[name="username"]').value,
+                password: document.querySelector('input[name="password"]').value,
+                confirmPassword: document.querySelector('input[name="confirmPassword"]').value,
+                contactNumber: document.querySelector('input[name="contactNumber"]').value,
+                country: document.querySelector('select[name="country"]').value,
+                gender: document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '',
+                acceptTerms: document.querySelector('input[name="acceptTerms"]').checked
+            };
+            alert(JSON.stringify(formData));
+        });
+    </script>
+</body>
+</html>
