@@ -15,7 +15,7 @@ export default defineConfig({
   globalTimeout: 3000000, //total global timeout for execution of all tests
   timeout: 60000, // each test execution timeout
   expect: {
-    timeout: 5000, // Set the expectation timeout to 10 seconds
+    timeout: 10000, // Set the expectation timeout to 10 seconds
   },
   testDir: './tests',
   /* Run tests in files in parallel */

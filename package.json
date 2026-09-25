@@ -15,6 +15,7 @@
     "@types/node": "^26.6.2"
   },
   "dependencies": {
+    "tamash-playwright": "^0.14.0",
     "tamash-playwright-dashboard": "^0.4.0",
     "typescript": "^7.0.2"
   }

@@ -1,5 +1,5 @@
 import { expect, Locator, Page } from "@playwright/test";
-
+import { getRandomNumber } from "../datautils/datagen";
 export class AddEmpPage {
 
     private page: Page;
@@ -32,7 +32,8 @@ export class AddEmpPage {
 
     async enterUniqEmployeeId(employeeId?: string) {
         if (!employeeId) {
-            employeeId = `EMP${Date.now()}`;
+            // employeeId = `EMP${Date.now()}`;
+            employeeId = `EMP${getRandomNumber()}`;
         }
         await this.employeeid.fill(employeeId);
         console.log(`Entered Employee Id: ${employeeId}`);
@@ -49,11 +50,11 @@ export class AddEmpPage {
     }
 
     async verifySuccessMessageVisible() {
-        expect(await this.elmSuccessMessage.isVisible()).toBe(true);
+        await expect(this.elmSuccessMessage).toBeVisible();
         console.log(`Success message is visible`);
     }
     async verifyAddEmployeePageVisible() {
-        expect(await this.hdrAddEmp.isVisible()).toBe(true);
+        await expect(this.hdrAddEmp).toBeVisible();
         console.log(`Add Employee page is visible`);
     }
 

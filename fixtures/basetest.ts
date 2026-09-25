@@ -1,7 +1,8 @@
-import { test as base } from '@playwright/test';
+// import { test as base } from '@playwright/test';
+import { test as base,expect } from 'tamash-playwright';
 // import module with type json
 import creds from "./../files/creds.json";
-import { LoginPage, AddEmpPage, DashboardPage, BasePage } from "./../pages";
+import { LoginPage, AddEmpPage, DashboardPage, BasePage, PIMPage } from "./../pages";
 
 type CredsType = {
     username: string;
@@ -14,12 +15,15 @@ type AppFixtures = {
     addEmpPage: AddEmpPage,
     dashboardPage: DashboardPage,
     basePage: BasePage,
+    pimPage: PIMPage,
 };
 type AppData = {
     adminCreds: CredsType,
     apikey: string,
 };
 let apikey: string = "abcd";
+
+export { expect };
 
 export const test = base.extend<{
     App: AppFixtures,
@@ -38,6 +42,7 @@ export const test = base.extend<{
             addEmpPage: new AddEmpPage(page),
             dashboardPage: new DashboardPage(page),
             basePage: new BasePage(page),
+            pimPage: new PIMPage(page),
         });
     }
 });

@@ -7,13 +7,14 @@ export class LoginPage {
     private txtUserName: Locator;
     private txtPassword: Locator;
     private btnLogin: Locator;
-
+    private txtOTP: Locator;
     constructor(page: Page) {
         this.page = page;
         // Initialize elements here if needed
-        this.txtUserName = page.getByRole('textbox', { name: 'Username' }).describe("Username input field"); 
+        this.txtUserName = page.getByRole('textbox', { name: 'xyz' }).describe("Username input field"); 
         this.txtPassword = page.getByRole('textbox', { name: 'Password' }).describe("Password input field"); 
         this.btnLogin = page.getByRole('button', { name: 'Login' }).describe("Login button");
+        this.txtOTP = page.getByRole('textbox', { name: 'OTP' }).describe("OTP input field"); 
     }
 
     async enterUsername(username: string) {
@@ -24,6 +25,11 @@ export class LoginPage {
     async enterPassword(password: string) {
         await this.txtPassword.fill(password);
         console.log(`Entered password: ${password}`);
+    }
+
+    async enterOTP(otp: string) {
+        await this.txtOTP.fill(otp);
+        console.log(`Entered OTP: ${otp}`);
     }
     async clickLogin() {
         await this.btnLogin.click();
