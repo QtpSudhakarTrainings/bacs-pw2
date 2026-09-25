@@ -1,7 +1,7 @@
 import { test as base } from '@playwright/test';
 // import module with type json
 import creds from "./../files/creds.json";
-import { LoginPage, AddEmpPage, DashboardPage } from "./../pages";
+import { LoginPage, AddEmpPage, DashboardPage, BasePage } from "./../pages";
 
 type CredsType = {
     username: string;
@@ -9,29 +9,35 @@ type CredsType = {
     otp: number;
 };
 
+type AppFixtures = {
+    loginPage: LoginPage,
+    addEmpPage: AddEmpPage,
+    dashboardPage: DashboardPage,
+    basePage: BasePage,
+};
+type AppData = {
+    adminCreds: CredsType,
+    apikey: string,
+};
 let apikey: string = "abcd";
 
 export const test = base.extend<{
-    adminCreds: CredsType,
-    apikey: string,
-    loginPage: LoginPage,
-    addEmpPage: AddEmpPage,
-    dashboardPage: DashboardPage
+    App: AppFixtures,
+    AppData: AppData
 }>({
     // Define any fixtures or overrides here
-    adminCreds: async ({ }, use) => {
-        await use(creds.admin as CredsType);
+    AppData: async ({ }, use) => {
+        await use({
+            adminCreds: creds.admin as CredsType,
+            apikey: apikey,
+        });
     },
-    apikey: async ({ }, use) => {
-        await use(apikey);
-    },
-    loginPage: async ({ page }, use) => {
-        await use(new LoginPage(page));
-    },
-    addEmpPage: async ({ page }, use) => {
-        await use(new AddEmpPage(page));
-    },
-    dashboardPage: async ({ page }, use) => {
-        await use(new DashboardPage(page));
+    App: async ({ page }, use) => {
+        await use({
+            loginPage: new LoginPage(page),
+            addEmpPage: new AddEmpPage(page),
+            dashboardPage: new DashboardPage(page),
+            basePage: new BasePage(page),
+        });
     }
 });

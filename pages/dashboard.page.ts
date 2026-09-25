@@ -23,6 +23,6 @@ export class DashboardPage {
     }
 
     async verifyDashboardOpened() {
-        expect(await this.hdrDashboard.isVisible()).toBe(true);
+        expect.soft(await this.hdrDashboard.isVisible()).toBe(true);
     }
 }

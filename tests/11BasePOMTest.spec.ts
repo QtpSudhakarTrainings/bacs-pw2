@@ -1,19 +1,19 @@
 import { test } from "../fixtures/basetest";
 import { expect } from "@playwright/test";
 
-test("Add Employee Test", async ({ page, loginPage, dashboardPage, addEmpPage }) => {
-
-    await page.goto("https://qtpsudhakar-vibetestq-hrm.up.railway.app/");
-    await loginPage.enterUsername("admin");
-    await loginPage.enterPassword("admin123");
-    await loginPage.clickLogin();
-    await dashboardPage.verifyDashboardOpened();
-    await dashboardPage.clickPIM();
-    await addEmpPage.verifyAddEmployeePageVisible();
-    await addEmpPage.enterFirstName("John");
-    await addEmpPage.enterLastName("Doe");
-    await addEmpPage.enterUniqEmployeeId();
-    const employeeId = await addEmpPage.getEmployeeId();
-    await addEmpPage.clickSave();
-    await addEmpPage.verifySuccessMessageVisible();
+test("Add Employee Test", async ({ App, AppData }) => {
+    
+    await App.basePage.navigateTo("/");
+    await App.loginPage.enterUsername(AppData.adminCreds.username);
+    await App.loginPage.enterPassword(AppData.adminCreds.password);
+    await App.loginPage.clickLogin();
+    await App.dashboardPage.verifyDashboardOpened();
+    await App.dashboardPage.clickPIM();
+    await App.addEmpPage.verifyAddEmployeePageVisible();
+    await App.addEmpPage.enterFirstName("John");
+    await App.addEmpPage.enterLastName("Doe");
+    await App.addEmpPage.enterUniqEmployeeId();
+    const employeeId = await App.addEmpPage.getEmployeeId();
+    await App.addEmpPage.clickSave();
+    await App.addEmpPage.verifySuccessMessageVisible();
 });
