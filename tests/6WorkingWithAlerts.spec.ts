@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('pages example', async ({ page }) => {
+test('pages example', { tag: "@smoke" }, async ({ page }) => {
 
   // Browser: represents the entire browser instance
   //  Context: represents a browser context, like an incognito window

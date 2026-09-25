@@ -55,3 +55,22 @@ login(guestCreds)
 
 // unique id generation
 console.log(Date.now());;
+
+// Generic type function
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+type ct = { userName: string, password: string }
+
+let output1 = identity<string>("Hello, World!");
+let output2 = identity<number>(42);
+
+console.log(output1);
+console.log(output2);
+
+identity<ct>({ userName: "admin", password: "admin123" });
+let output3 = identity<ct>({ userName: "admin", password: "admin123" });
+console.log(output3);
+// The identity function can be used with any type, 
+// providing type safety and flexibility.
