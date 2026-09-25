@@ -4,19 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test"
+    "test": "npx playwright test",
+    "bdd:dryrun": "node --import tsx node_modules/@cucumber/cucumber/bin/cucumber.js --dry-run",
+    "test:bdd": "node --import tsx node_modules/@cucumber/cucumber/bin/cucumber.js",
+    "test:bdd:report": "node --import tsx node_modules/@cucumber/cucumber/bin/cucumber.js --format html:cucumber-report.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@cucumber/cucumber": "^13.2.1",
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.2"
   },
   "dependencies": {
     "tamash-playwright": "^0.14.0",
     "tamash-playwright-dashboard": "^0.4.0",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
 }

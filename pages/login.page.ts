@@ -11,7 +11,7 @@ export class LoginPage {
     constructor(page: Page) {
         this.page = page;
         // Initialize elements here if needed
-        this.txtUserName = page.getByRole('textbox', { name: 'xyz' }).describe("Username input field"); 
+        this.txtUserName = page.getByRole("textbox", { name: "Username" }).describe("Username input field"); 
         this.txtPassword = page.getByRole('textbox', { name: 'Password' }).describe("Password input field"); 
         this.btnLogin = page.getByRole('button', { name: 'Login' }).describe("Login button");
         this.txtOTP = page.getByRole('textbox', { name: 'OTP' }).describe("OTP input field"); 

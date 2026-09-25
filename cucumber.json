@@ -1,0 +1,8 @@
+{
+  "default": [
+    "bdd/features/**/*.feature",
+    "--import", ["bdd/steps/**/*.steps.ts","bdd/support/**/*.ts"],
+    "--format", "progress",
+    "--format", "html:cucumber-report.html"
+  ]
+}
